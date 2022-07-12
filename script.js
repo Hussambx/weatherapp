@@ -12,8 +12,9 @@ function start(){
     currentweather.innerText = data.weather[0].description;
     currenttemp.innerText = Math.round(data.main.temp-273.15);
     locationa.innerText = data.name;
+    img.src = "http://openweathermap.org/img/wn/"+data.weather[0].icon+"@2x.png"
     console.log(data.weather[0].description);
-    alert("we did it");
+    console.log(data);
   })
   .catch(e => {
     console.log(e)
