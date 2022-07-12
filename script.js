@@ -17,6 +17,9 @@ function start(){
     currenttemp.innerText = degree(data.main.temp);
     locationa.innerText = data.name;
     img.src = "http://openweathermap.org/img/wn/"+data.weather[0].icon+"@4x.png"
+    hum.innerText = "Hum:"+data.main.humidity+"%";
+    high.innerText ="High:"+degree(data.main.temp_max)+"°";
+    low.innerText="Low:"+degree(data.main.temp_min)+"°";
     console.log(data.weather[0].description);
     console.log(data);
   })
