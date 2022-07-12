@@ -16,3 +16,22 @@ input{
 input::placeholder{
     color: white;
 }
+#subcat{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    height: 200px;
+}
+#left,#right{
+   height: 100%;
+}
+
+#left>h2{
+    font-size: 120px;
+    height: 100%;
+    margin-top: 20%;
+}
+
+#divider {
+    border-left: thick solid #ff0000;
+  }
