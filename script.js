@@ -8,7 +8,7 @@ function start(){
   })
   .then(function(data) {
     currentweather.innerText = data.weather[0].description;
-    currenttemp.innerText = data.main.temp-273.15;
+    currenttemp.innerText = Math.round(data.main.temp-273.15);
     console.log(data.weather[0].description);
     alert("we did it");
   });
