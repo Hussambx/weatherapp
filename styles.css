@@ -1,8 +1,15 @@
+*{
+    font-family:  Courier,Helvetica, sans-serif;
+    color: black;
+    background-color: white;
+}
+
 form,form>input{
     text-align: center;
     margin-top: 2%;
    font-size: x-large;
    color: white;
+   margin-bottom: 5px;
 }
 
 input{
@@ -16,20 +23,43 @@ input{
 input::placeholder{
     color: white;
 }
+#main{
+    text-align: center;
+    margin-bottom: 0%;
+    
+}
+
+#main>h2,h3{
+    margin: 0;
+    padding: 0%;
+}
+#locationx{
+    font-size: 80px;
+}
+#current{
+    font-size: 40px;
+}
 #subcat{
+    margin-top: 0%;
     display: flex;
     justify-content: center;
-    gap: 30px;
-    height: 200px;
+    gap: 15px;
+    height: 120px;
 }
-#left,#right{
+#left,#right,#divider{
+    margin-top: 0%;
    height: 100%;
 }
 
 #left>h2{
-    font-size: 120px;
+    font-size: 140px;
     height: 100%;
-    margin-top: 20%;
+    margin-top: -10px;
+}
+
+#right>h2{
+    margin: 5px;
+    font-size: x-large;
 }
 
 #divider {
