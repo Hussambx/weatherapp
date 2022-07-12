@@ -65,3 +65,14 @@ input::placeholder{
 #divider {
     border-left: thick solid #ff0000;
   }
+
+  #weekly{
+    display: flex;
+    gap: 60px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  #weekly>div{
+    width: 50px;
+  }
