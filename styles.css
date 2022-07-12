@@ -69,11 +69,11 @@ input::placeholder{
 
 #right>h2{
     margin: 5px;
-    font-size: x-large;
+    font-size: large;
 }
 
 #divider {
-    border-left: thick solid #ff0000;
+    border-left: thick solid #000000;
   }
 
   #weekly{
