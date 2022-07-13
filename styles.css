@@ -5,7 +5,6 @@
     
 }
 body{
-    
     background: linear-gradient( to right,#136a8a, #80D0C7);
 }
 form,form>input{
@@ -98,4 +97,14 @@ input::placeholder{
     margin-top: 0;
     width: 200px;
     text-align: center;
+  }
+
+  h4{
+    text-align: center;
+    margin-top: 0;
+    color: red;
+    padding: 0%;
+    font-size: x-large;
+    font-weight: bolder;
+    margin: 0%;
   }
