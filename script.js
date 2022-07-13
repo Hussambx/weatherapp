@@ -6,6 +6,15 @@ const hum = document.getElementById("hum");
 const high = document.getElementById("high");
 const low = document.getElementById("low");
 
+document.querySelector('form').addEventListener('submit',(e)=> {
+  const formData = new FormData(e.target);
+  e.preventDefault() 
+  alert(e)
+  let a = formData.get("location");
+  alert(a);
+});
+
+
 start();
 function start(){
   fetch('http://api.openweathermap.org/data/2.5/weather?q=London&APPID=d107d94978e6221f163ee8546b7ae0a0', {mode: 'cors'})
