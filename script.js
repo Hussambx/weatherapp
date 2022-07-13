@@ -34,6 +34,7 @@ function start(location){
     low.innerText="Low:"+degree(data.main.temp_min)+"°";
     console.log(data.weather[0].description);
     console.log(data);
+    document.getElementById("not").innerText="";
     color();
   })
   .catch(e => {
