@@ -5,7 +5,8 @@ const img = document.getElementById("curimg");
 const hum = document.getElementById("hum");
 const high = document.getElementById("high");
 const low = document.getElementById("low");
-
+const loc = document.getElementById("location");
+let track = 0;
 //Event listener for form data 
 document.querySelector('form').addEventListener('submit',(e)=> {
   const formData = new FormData(e.target);
@@ -33,9 +34,12 @@ function start(location){
     low.innerText="Low:"+degree(data.main.temp_min)+"°";
     console.log(data.weather[0].description);
     console.log(data);
+    color();
   })
   .catch(e => {
-    console.log("ERROR")
+    document.getElementById("not").innerText="Location Not Found"
+    alert("wrong");
+ 
   })
 }
 
@@ -44,4 +48,24 @@ function start(location){
 function degree(num){
   return Math.round(num-273.15);
 }
+//Changes Background Color 
+function color(){
+  alert(track);
+  if(track==0){
+    track++;
+    document.body.style.background = "linear-gradient( to left,#F4D03F,#16A085)";
+  }else if(track==1){
+    track++;
+    document.body.style.background = "linear-gradient( to right,#08AEE, #2AF598)";
+  }else if(track==2){
+    document.body.style.background = "linear-gradient( to right,#21D4FD, #B721FF)";
+    track++;
+  }else if(track==3){
+    document.body.style.background = "linear-gradient( to right,#FAD961,#F76B1C)";
+track++
+  }else{
+    document.body.style.background = "linear-gradient( to right,#136a8a, #80D0C7)";
+track = 0;
+  }
 
+}
