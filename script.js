@@ -6,18 +6,20 @@ const hum = document.getElementById("hum");
 const high = document.getElementById("high");
 const low = document.getElementById("low");
 
+//Event listener for form data 
 document.querySelector('form').addEventListener('submit',(e)=> {
   const formData = new FormData(e.target);
   e.preventDefault() 
   alert(e)
   let a = formData.get("location");
-  alert(a);
+  if(a!=""){
+    start(a);
+  }
 });
-
-
-start();
-function start(){
-  fetch('http://api.openweathermap.org/data/2.5/weather?q=London&APPID=d107d94978e6221f163ee8546b7ae0a0', {mode: 'cors'})
+start("toronto");
+//Fetch's data accordingly to form input 
+function start(location){
+  fetch('http://api.openweathermap.org/data/2.5/weather?q='+location+'&APPID=d107d94978e6221f163ee8546b7ae0a0', {mode: 'cors'})
   .then(function(response) {
     return response.json();
   })
@@ -33,7 +35,7 @@ function start(){
     console.log(data);
   })
   .catch(e => {
-    console.log(e)
+    console.log("ERROR")
   })
 }
 
@@ -42,3 +44,4 @@ function start(){
 function degree(num){
   return Math.round(num-273.15);
 }
+
