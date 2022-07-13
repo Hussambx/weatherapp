@@ -6,7 +6,7 @@ const hum = document.getElementById("hum");
 const high = document.getElementById("high");
 const low = document.getElementById("low");
 const loc = document.getElementById("location");
-let track = 0;
+let track = -1;
 //Event listener for form data 
 document.querySelector('form').addEventListener('submit',(e)=> {
   const formData = new FormData(e.target);
@@ -32,15 +32,22 @@ function start(location){
     hum.innerText = "Hum:"+data.main.humidity+"%";
     high.innerText ="High:"+degree(data.main.temp_max)+"°";
     low.innerText="Low:"+degree(data.main.temp_min)+"°";
-    console.log(data.weather[0].description);
     console.log(data);
     document.getElementById("not").innerText="";
+    d = new Date()
+    localTime = d.getTime()
+    localOffset = d.getTimezoneOffset() * 60000
+    utc = localTime + localOffset
+    var atlanta = utc + (1000 * +data.timezone)
+    local = new Date(atlanta);
+    alert(local.getHours()+':'+local.getMinutes())
+
+
+
     color();
   })
   .catch(e => {
-    document.getElementById("not").innerText="Location Not Found"
-    alert("wrong");
- 
+    document.getElementById("not").innerText="Location Not Found" 
   })
 }
 
