@@ -7,6 +7,7 @@ const high = document.getElementById("high");
 const low = document.getElementById("low");
 const loc = document.getElementById("location");
 let track = -1;
+let det = 0;
 const timexx =document.getElementById("time");
 //Event listener for form data 
 document.querySelector('form').addEventListener('submit',(e)=> {
@@ -77,7 +78,8 @@ const sleep = (milliseconds) => {
 
 //Added Track Time Function 
 const tracktime= async (time) => {
-  while(true){
+  let place = locationa.innerText;
+  while(place==locationa.innerText){
     await sleep(1000)
     d = new Date()
     localTime = d.getTime()
