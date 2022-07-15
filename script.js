@@ -21,7 +21,7 @@ document.querySelector('form').addEventListener('submit',(e)=> {
     start(a);
   }
 });
-start("toronto");
+start("toronto");  //Fetchs Toronto Weather Info Once Page Is First Opened 
 //Fetch's data accordingly to form input 
 function start(location){
   fetch('https://api.openweathermap.org/data/2.5/forecast?q='+location+'&appid=d107d94978e6221f163ee8546b7ae0a0&cnt=7', {mode: 'cors'})
@@ -47,7 +47,7 @@ function start(location){
     document.getElementById("not").innerText="Location Not Found" 
   })
 }
-
+//Creates WeeklyForecast elements 
 function weeklyforecast(data){
   console.log(data);
   let x = localday;
@@ -67,9 +67,11 @@ function weeklyforecast(data){
   }
 }
 
+//Changes Temp To Degree
 function degree(num){
   return Math.round(num-273.15);
 }
+
 //Changes Background Color 
 function color(){
   if(track==0){
@@ -91,6 +93,7 @@ track = 0;
 
 }
 
+//Clears Out Existing Weekly Data 
 function clearout(){
   for(let a =0; a<week.length; a++){
     while (document.getElementById(week[a]).firstChild) {
@@ -98,7 +101,6 @@ function clearout(){
   }
   }
 }
-
 
 const sleep = (milliseconds) => {
   
