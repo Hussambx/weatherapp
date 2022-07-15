@@ -12,6 +12,7 @@ const timexx =document.getElementById("time");
 let localday = '';
 let week = ['one','two','three','four','five','six','seven'];
 let weekname = ['Sun',"Mon",'Tue','Wed','Thur','Fri','Sat','Sun',"Mon",'Tue','Wed','Thur','Fri','Sat']
+
 //Event listener for form data 
 document.querySelector('form').addEventListener('submit',(e)=> {
   const formData = new FormData(e.target);
@@ -21,7 +22,11 @@ document.querySelector('form').addEventListener('submit',(e)=> {
     start(a);
   }
 });
+
 start("toronto");  //Fetchs Toronto Weather Info Once Page Is First Opened 
+track = Math.floor(Math.random() * 4); //Randomly Selects One Of The Color Options 
+console.log(track);
+
 //Fetch's data accordingly to form input 
 function start(location){
   fetch('https://api.openweathermap.org/data/2.5/forecast?q='+location+'&appid=d107d94978e6221f163ee8546b7ae0a0&cnt=7', {mode: 'cors'})
@@ -47,6 +52,7 @@ function start(location){
     document.getElementById("not").innerText="Location Not Found" 
   })
 }
+
 //Creates WeeklyForecast elements 
 function weeklyforecast(data){
   console.log(data);
@@ -110,6 +116,16 @@ const sleep = (milliseconds) => {
 //Added Track Time Function 
 const tracktime= async (time) => {
   let place = locationa.innerText;
+  repeated(time)
+
+  while(place==locationa.innerText){
+    await sleep(1000)
+    repeated(time);
+  }
+}
+
+//Helped Reduce Space Taken Up in tracktime 
+function repeated(time){
   d = new Date()
   localTime = d.getTime()
   localOffset = d.getTimezoneOffset() * 60000
@@ -119,17 +135,4 @@ const tracktime= async (time) => {
   localday=local.getDay();
   let localtimex =local.getHours()+':'+local.getMinutes()+':'+local.getSeconds();
 timexx.innerText=localtimex;
-
-  while(place==locationa.innerText){
-    await sleep(1000)
-    d = new Date()
-    localTime = d.getTime()
-    localOffset = d.getTimezoneOffset() * 60000
-    utc = localTime + localOffset
-    var atlanta = utc + (1000 * +time)
-    local = new Date(atlanta);
-    localday=local.getDay();
-    let localtimex =local.getHours()+':'+local.getMinutes()+':'+local.getSeconds();
-  timexx.innerText=localtimex;
-  }
 }
