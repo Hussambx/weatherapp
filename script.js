@@ -9,6 +9,9 @@ const loc = document.getElementById("location");
 let track = -1;
 let det = 0;
 const timexx =document.getElementById("time");
+let localday = '';
+let week = ['one','two','three','four','five','six','seven'];
+let weekname = ['Sun',"Mon",'Tue','Wed','Thur','Fri','Sat']
 //Event listener for form data 
 document.querySelector('form').addEventListener('submit',(e)=> {
   const formData = new FormData(e.target);
@@ -37,6 +40,7 @@ function start(location){
     document.getElementById("not").innerText="";
     tracktime(data.city.timezone);
     color();
+    weeklyforecast(data);
   })
   .catch(e => {
     document.getElementById("not").innerText="Location Not Found" 
@@ -86,6 +90,7 @@ const tracktime= async (time) => {
     utc = localTime + localOffset
     var atlanta = utc + (1000 * +time)
     local = new Date(atlanta);
+    localday=local.getDay();
     let localtimex =local.getHours()+':'+local.getMinutes()+':'+local.getSeconds();
   timexx.innerText=localtimex;
   }
