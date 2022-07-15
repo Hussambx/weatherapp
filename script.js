@@ -11,7 +11,7 @@ let det = 0;
 const timexx =document.getElementById("time");
 let localday = '';
 let week = ['one','two','three','four','five','six','seven'];
-let weekname = ['Sun',"Mon",'Tue','Wed','Thur','Fri','Sat']
+let weekname = ['Sun',"Mon",'Tue','Wed','Thur','Fri','Sat','Sun',"Mon",'Tue','Wed','Thur','Fri','Sat']
 //Event listener for form data 
 document.querySelector('form').addEventListener('submit',(e)=> {
   const formData = new FormData(e.target);
@@ -48,11 +48,21 @@ function start(location){
 }
 
 function weeklyforecast(data){
+  console.log(data);
+  let x = localday;
+  console.log(x);
   for(let i = 0; i<week.length;i++){
     let a = document.createElement("h3");
     let b =document.createElement('img');
     let c = document.createElement('h5');
-
+    a.innerText = weekname[x];
+    b.src = "http://openweathermap.org/img/wn/"+data.list[i].weather[0].icon+"@4x.png";
+    c.innerText = degree(data.list[i].main.temp)+'°';
+    let d= document.getElementById(week[i]);
+    d.appendChild(a);
+    d.appendChild(b);
+    d.appendChild(c);
+   x++;
   }
 }
 
@@ -89,6 +99,16 @@ const sleep = (milliseconds) => {
 //Added Track Time Function 
 const tracktime= async (time) => {
   let place = locationa.innerText;
+  d = new Date()
+  localTime = d.getTime()
+  localOffset = d.getTimezoneOffset() * 60000
+  utc = localTime + localOffset
+  var atlanta = utc + (1000 * +time)
+  local = new Date(atlanta);
+  localday=local.getDay();
+  let localtimex =local.getHours()+':'+local.getMinutes()+':'+local.getSeconds();
+timexx.innerText=localtimex;
+
   while(place==locationa.innerText){
     await sleep(1000)
     d = new Date()
