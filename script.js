@@ -37,6 +37,7 @@ function start(location){
     high.innerText ="High:"+degree(data.list[0].main.temp_max)+"°";
     low.innerText="Low:"+degree(data.list[0].main.temp_min)+"°";
     console.log(data);
+    clearout()
     document.getElementById("not").innerText="";
     tracktime(data.city.timezone);
     color();
@@ -88,6 +89,14 @@ track++
 track = 0;
   }
 
+}
+
+function clearout(){
+  for(let a =0; a<week.length; a++){
+    while (document.getElementById(week[a]).firstChild) {
+      document.getElementById(week[a]).removeChild(document.getElementById(week[a]).firstChild);
+  }
+  }
 }
 
 
