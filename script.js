@@ -13,7 +13,6 @@ const timexx =document.getElementById("time");
 document.querySelector('form').addEventListener('submit',(e)=> {
   const formData = new FormData(e.target);
   e.preventDefault() 
-  alert(e)
   let a = formData.get("location");
   if(a!=""){
     start(a);
@@ -22,22 +21,21 @@ document.querySelector('form').addEventListener('submit',(e)=> {
 start("toronto");
 //Fetch's data accordingly to form input 
 function start(location){
-  fetch('http://api.openweathermap.org/data/2.5/weather?q='+location+'&APPID=d107d94978e6221f163ee8546b7ae0a0', {mode: 'cors'})
+  fetch('https://api.openweathermap.org/data/2.5/forecast?q='+location+'&appid=d107d94978e6221f163ee8546b7ae0a0&cnt=7', {mode: 'cors'})
   .then(function(response) {
     return response.json();
   })
   .then(function(data) {
-    currentweather.innerText = data.weather[0].description;
-    currenttemp.innerText = degree(data.main.temp);
-    locationa.innerText = data.name;
-    img.src = "http://openweathermap.org/img/wn/"+data.weather[0].icon+"@4x.png"
-    hum.innerText = "Hum:"+data.main.humidity+"%";
-    high.innerText ="High:"+degree(data.main.temp_max)+"°";
-    low.innerText="Low:"+degree(data.main.temp_min)+"°";
+    currentweather.innerText = data.list[0].weather[0].description;
+    currenttemp.innerText = degree(data.list[0].main.temp);
+    locationa.innerText = data.city.name;
+    img.src = "http://openweathermap.org/img/wn/"+data.list[0].weather[0].icon+"@4x.png";
+    hum.innerText = "Hum:"+data.list[0].main.humidity+"%";
+    high.innerText ="High:"+degree(data.list[0].main.temp_max)+"°";
+    low.innerText="Low:"+degree(data.list[0].main.temp_min)+"°";
     console.log(data);
     document.getElementById("not").innerText="";
-    
-    tracktime(data.timezone);
+    tracktime(data.city.timezone);
     color();
   })
   .catch(e => {
@@ -52,7 +50,6 @@ function degree(num){
 }
 //Changes Background Color 
 function color(){
-  alert(track);
   if(track==0){
     track++;
     document.body.style.background = "linear-gradient( to left,#F4D03F,#16A085)";
@@ -72,7 +69,9 @@ track = 0;
 
 }
 
+
 const sleep = (milliseconds) => {
+  
   return new Promise(resolve => setTimeout(resolve, milliseconds))
 }
 
