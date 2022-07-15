@@ -47,7 +47,14 @@ function start(location){
   })
 }
 
+function weeklyforecast(data){
+  for(let i = 0; i<week.length;i++){
+    let a = document.createElement("h3");
+    let b =document.createElement('img');
+    let c = document.createElement('h5');
 
+  }
+}
 
 function degree(num){
   return Math.round(num-273.15);
