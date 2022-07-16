@@ -25,7 +25,6 @@ document.querySelector('form').addEventListener('submit',(e)=> {
 
 start("toronto");  //Fetchs Toronto Weather Info Once Page Is First Opened 
 track = Math.floor(Math.random() * 4); //Randomly Selects One Of The Color Options 
-console.log(track);
 
 //Fetch's data accordingly to form input 
 function start(location){
@@ -41,7 +40,6 @@ function start(location){
     hum.innerText = "Hum:"+data.list[0].main.humidity+"%";
     high.innerText ="High:"+degree(data.list[0].main.temp_max)+"°";
     low.innerText="Low:"+degree(data.list[0].main.temp_min)+"°";
-    console.log(data);
     clearout()
     document.getElementById("not").innerText="";
     tracktime(data.city.timezone);
@@ -55,9 +53,7 @@ function start(location){
 
 //Creates WeeklyForecast elements 
 function weeklyforecast(data){
-  console.log(data);
   let x = localday;
-  console.log(x);
   for(let i = 0; i<week.length;i++){
     let a = document.createElement("h3");
     let b =document.createElement('img');

@@ -9,7 +9,7 @@ body{
 }
 form,form>input{
     text-align: center;
-    margin-top: 2%;
+    margin-top: 1%;
    font-size: x-large;
    color: white;
    margin-bottom: 5px;
@@ -38,10 +38,12 @@ input::placeholder{
     
 }
 
-#main>h2,h3{
-    margin: 0;
-    padding: 0%;
+h2,h3{
+  margin: 0%;
+  padding: 0%;
+  text-align: center;
 }
+
 #locationx{
     font-size: 80px;
 }
@@ -77,24 +79,23 @@ input::placeholder{
 
   #weekly{
     display: flex;
-    gap: 1px;
+    gap: 0px;
     width: 100%;
     justify-content: center;
     margin-top: 0px;
     flex-wrap: wrap;
     flex-wrap: wrap;
-    padding: 0;
   }
 
   #weekly>div{
     width: 100px;
+    margin: 0%;
   }
  
   #imgcur{
     margin-top: 0px;
     display: flex;
     justify-content: center;
-    padding: 0%;
     
   }
   
@@ -115,11 +116,9 @@ input::placeholder{
 
   #weekly>div>h3{
     font-style: italic;
+    margin-top: -2px;
   }
  
-  h3{
-    text-align: center; 
- }
  h5{
     text-align: center;
     font-size: medium;
